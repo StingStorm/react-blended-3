@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Header } from './components';
+import { Header, Loader } from './components';
 
 const Home = lazy(() => import('./pages/Home'));
 const Country = lazy(() => import('./pages/Country'));
@@ -11,7 +11,7 @@ export const App = () => {
     <>
       <Header />
 
-      <Suspense>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/country" element={<SearchCountry />} />
